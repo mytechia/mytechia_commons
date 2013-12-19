@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE attributes PUBLIC "-//NetBeans//DTD DefaultAttributes 1.0//EN" "http://www.netbeans.org/dtds/attributes-1_0.dtd">
+<attributes version="1.0">
+    <fileobject name="license-agpl30-UNIDA.txt">
+        <attr name="displayName" stringvalue="Affero GLP 3.0 - UNIDA"/>
+        <attr name="mavenLicenseURL" stringvalue="http://www.gnu.org/licenses/gpl-3.0.html"/>
+        <attr name="template" boolvalue="true"/>
+    </fileobject>
+    <fileobject name="license-lgpl30-mytechia-commons.txt">
+        <attr name="displayName" stringvalue="Lesser GPL 3.0 - mytechia-commons"/>
+        <attr name="mavenLicenseURL" stringvalue="http://www.gnu.org/licenses/lgpl-2.1.html"/>
+        <attr name="template" boolvalue="true"/>
+    </fileobject>
+</attributes>
