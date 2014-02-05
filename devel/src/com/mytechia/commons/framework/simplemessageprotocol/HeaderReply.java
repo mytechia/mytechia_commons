@@ -82,8 +82,7 @@ public class HeaderReply extends Message {
     
     public byte getReplyType() {
         return replyType;
-    }
-    
+    }    
     
 
     /**
