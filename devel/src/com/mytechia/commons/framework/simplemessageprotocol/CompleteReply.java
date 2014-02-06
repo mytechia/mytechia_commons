@@ -37,8 +37,7 @@ import java.util.Arrays;
  *
  *      13/03/2008  --  Initial version
  */
-public class CompleteReply extends HeaderReply {
-    
+public class CompleteReply extends HeaderReply {    
     
     /**
      * Constructor.
@@ -100,7 +99,6 @@ public class CompleteReply extends HeaderReply {
                 if (bytes[initIndex + dataSize] != dataChecksum) {
                     throw new MessageFormatException("Data checksum error.");
                 }
-
                 setData(Arrays.copyOfRange(bytes, initIndex, initIndex + dataSize));
                 setDataChecksum(dataChecksum);
             }

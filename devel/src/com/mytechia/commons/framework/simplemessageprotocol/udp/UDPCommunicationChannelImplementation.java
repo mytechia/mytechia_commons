@@ -71,7 +71,7 @@ public class UDPCommunicationChannelImplementation implements IUDPCommunicationC
     
     private void setBroadcastAdresses() throws SocketException
     {
-        this.broadcastAddressList = new ArrayList<>(1);
+        this.broadcastAddressList = new ArrayList<UDPAddress>(1);
         Enumeration<NetworkInterface> nicList = NetworkInterface.getNetworkInterfaces();
         while(nicList.hasMoreElements()) {
             NetworkInterface nic = nicList.nextElement();
