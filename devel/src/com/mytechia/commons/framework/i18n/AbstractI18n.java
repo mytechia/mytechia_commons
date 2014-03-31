@@ -1,7 +1,26 @@
+/*******************************************************************************
+ *   
+ *   Copyright 2008 Mytech Ingenieria Aplicada <http://www.mytechia.com>, Julio Alberto Gomez Fernandez
+ * 
+ *   This file is part of Mytechia Commons.
+ *
+ *   Mytechia Commons is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU Lesser General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   Mytechia Commons is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU Lesser General Public License for more details.
+ *
+ *   You should have received a copy of the GNU Lesser General Public License
+ *   along with Mytechia Commons.  If not, see <http://www.gnu.org/licenses/>.
+ * 
+ ******************************************************************************/
+
 package com.mytechia.commons.framework.i18n;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -21,14 +40,14 @@ import java.util.logging.Logger;
  * @author Julio Alberto Gomez Fernandez
  * @version 1
  */
-public class Tooli18n implements II18NInstance {
+public abstract class AbstractI18n implements II18NInstance {
 
     private final String langBundleName;
 
     private ResourceBundle messages = null;
 
 
-    public Tooli18n(String bundleName) {
+    public AbstractI18n(String bundleName) {
         this.langBundleName= bundleName;
     }
 
@@ -39,7 +58,7 @@ public class Tooli18n implements II18NInstance {
 
         } catch (MissingResourceException ex) {
             String msgError= String.format("Error trying to load locale file: %s_%s ", langBundleName, locale);
-            Logger.getLogger(Tooli18n.class.getName()).log(Level.SEVERE, msgError, ex);
+            Logger.getLogger(AbstractI18n.class.getName()).log(Level.FINE, msgError, ex);
         }
 
     }
@@ -56,16 +75,7 @@ public class Tooli18n implements II18NInstance {
 
     @Override
     public String getMessage(String key, Locale locale) {
-        
         return ResourceBundle.getBundle(langBundleName, locale).getString(key);
-        
-        
-    }
-
-    @Override
-    @Deprecated
-    public Collection<Locale> getAvailableLocales() {
-        return new ArrayList<Locale>(); 
     }
 
     @Override
@@ -82,15 +92,6 @@ public class Tooli18n implements II18NInstance {
     @Override
     public void setLocale(Locale locale) {
         this.loadMessages(locale);
-    }
-
-    @Override
-    @Deprecated
-    public boolean isDefault() {
-
-        Locale localeUsedByBundle = this.getLocale();
-
-        return Locale.getDefault().equals(localeUsedByBundle);
     }
 
 }

@@ -4,7 +4,7 @@
 
   <groupId>com.mytechia</groupId>
   <artifactId>mytechia_commons_maven</artifactId>
-  <version>1.01</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
 
   <name>mytechia_commons_maven</name>
