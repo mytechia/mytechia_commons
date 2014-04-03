@@ -44,7 +44,7 @@ public abstract class Message {
     public static final int DATA_CHECKSUM_SIZE = 1;
 
     private byte commandType = 0;
-    private byte sequenceNumber = 0;
+    private int sequenceNumber = 0;
     private byte headerChecksum = 0;
     private byte[] data = null;
     private byte dataChecksum = 0;
@@ -59,7 +59,7 @@ public abstract class Message {
         return commandType;
     }
 
-    public byte getSequenceNumber() {
+    public int getSequenceNumber() {
         return sequenceNumber;
     }
 
@@ -102,7 +102,7 @@ public abstract class Message {
         this.commandType = commandType;
     }
 
-    protected void setSequenceNumber(byte sequenceNumber) {
+    protected void setSequenceNumber(int sequenceNumber) {
         this.sequenceNumber = sequenceNumber;
     }
 

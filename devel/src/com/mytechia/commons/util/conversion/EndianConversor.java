@@ -65,6 +65,12 @@ public final class EndianConversor
         data[dataIndex + 1] = (byte) (v >> 8 & 0xff);
     }
     
+    public static void ushortToLittleEndian(int v, byte[] data, int dataIndex)
+    {
+        data[dataIndex] = (byte)(v & 0xff);
+        data[dataIndex + 1] = (byte)(v >>> 8);
+    }      
+    
     
     public static short byteArrayLittleEndianToShort(byte[] data, int dataIndex) 
     {
@@ -85,6 +91,12 @@ public final class EndianConversor
         s += (short) (data[dataIndex + 1] & 0xff);
 
         return s;
+    }
+    
+    
+    public static int byteArrayLittleEndianToUShort(byte[] data, int dataIndex) 
+    {        
+        return (int)byteArrayLittleEndianToShort(data, dataIndex) & 0xffff;
     }
 
     

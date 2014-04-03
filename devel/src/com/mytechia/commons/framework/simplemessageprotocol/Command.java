@@ -44,15 +44,15 @@ public abstract class Command extends Message
     public static final int MAX_MESSAGE_SIZE = 2500; //bytes
     
     
-    public static final int COMMAND_HEADER_SIZE = 7;
+    public static final int COMMAND_HEADER_SIZE = 8;
    
     private static final int INIT_BYTE_INDEX = 0;
     private static final int COMMAND_TYPE_INDEX = 1;
     private static final int SEQUENCE_NUMBER_INDEX = 2;
-    private static final int ERROR_CODE_INDEX = 3;
+    private static final int ERROR_CODE_INDEX = 4;
     /** Index of Data Size field. Field of 2 bytes. */    
-    private static final int DATA_SIZE_INDEX = 4;
-    private static final int HEADER_CHECKSUM_INDEX = 6;
+    private static final int DATA_SIZE_INDEX = 5;
+    private static final int HEADER_CHECKSUM_INDEX = 7;
     private static final int DATA_INDEX = COMMAND_HEADER_SIZE;
 
 
@@ -87,7 +87,7 @@ public abstract class Command extends Message
 
     
     @Override
-    public void setSequenceNumber(byte sequenceNumber) {
+    public void setSequenceNumber(int sequenceNumber) {
         super.setSequenceNumber(sequenceNumber);
     }    
 
@@ -120,14 +120,22 @@ public abstract class Command extends Message
         bytes[INIT_BYTE_INDEX] = Message.INIT_BYTE;
         // Command type
         bytes[COMMAND_TYPE_INDEX] = getCommandType();
-        // Secuence number
-        bytes[SEQUENCE_NUMBER_INDEX] = getSequenceNumber();
+        // Secuence number   
+        if (getSequenceNumber() > 32767) {
+            System.out.println("");
+        }
+        EndianConversor.ushortToLittleEndian(getSequenceNumber(), bytes, SEQUENCE_NUMBER_INDEX);
+        
+        int sequenceNumber = EndianConversor.byteArrayLittleEndianToUShort(bytes, SEQUENCE_NUMBER_INDEX);
+        
+        
+        
         //error code
         bytes[ERROR_CODE_INDEX] = getErrorCode();
 
 
-        // Data size (2 bytes)
-        EndianConversor.shortToLittleEndian((short) getDataSize(), bytes, DATA_SIZE_INDEX);
+        // Data size (2 bytes)        
+        EndianConversor.ushortToLittleEndian(getDataSize(), bytes, DATA_SIZE_INDEX);
         
         // Message data        
         if (getDataSize() > 0) {            
@@ -177,7 +185,7 @@ public abstract class Command extends Message
         }
 
         // Obtain data size value
-        int dataSizeValue = EndianConversor.byteArrayLittleEndianToShort(messageHeaderData, DATA_SIZE_INDEX);
+        int dataSizeValue = EndianConversor.byteArrayLittleEndianToUShort(messageHeaderData, DATA_SIZE_INDEX);
         if (dataSizeValue >= 0) {
             this.dataSize = dataSizeValue;
         }
@@ -190,7 +198,13 @@ public abstract class Command extends Message
         // HeaderReply type
         this.errorCode = messageHeaderData[ERROR_CODE_INDEX];
         // Secuence number
-        setSequenceNumber(messageHeaderData[SEQUENCE_NUMBER_INDEX]);
+        int sequenceNumber = EndianConversor.byteArrayLittleEndianToUShort(messageHeaderData, SEQUENCE_NUMBER_INDEX);
+        if (sequenceNumber >= 0) {
+            setSequenceNumber(sequenceNumber);
+        }
+        else {
+            throw new MessageFormatException("Invalid sequence number value.");
+        }        
         // Head checksum
         setHeaderChecksum(headChecksum);
         // Data checksum
