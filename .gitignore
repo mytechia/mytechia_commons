@@ -8,7 +8,10 @@
 /devel/ide_project/gii_commons_logger/build/
 /devel/ide_project/gii_commons_logger/dist/
 /.project
-/devel/ide_project/mytechia_commons_logger/dist/
 /devel/ide_project/mytechia_commons_maven/target/
 devel/ide_project/mytechia_commons_maven/target/
 /devel/ide_project/mytechia_commons_maven/bin/target/
+/devel/ide_project/mytechia_commons_logger/dist/
+/devel/ide_project/mytechia_commons/target/
+devel/ide_project/mytechia_commons/target/
+/devel/ide_project/mytechia_commons/bin/
