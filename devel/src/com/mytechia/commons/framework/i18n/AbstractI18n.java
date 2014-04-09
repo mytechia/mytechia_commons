@@ -117,7 +117,7 @@ public abstract class AbstractI18n implements II18NInstance {
 
         
     
-    public void setInputStream(InputStream langBundleName) {
+    public void setPropertyResourceBundle(InputStream langBundleName) {
         
         if(langBundleName==null){
             throw new NullPointerException("The parameter langBundleName cannot be null");
