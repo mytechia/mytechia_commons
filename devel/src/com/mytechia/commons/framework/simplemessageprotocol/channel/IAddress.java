@@ -40,4 +40,7 @@ public interface IAddress
 
     public String getName();  
     
+    public boolean equals(IAddress address);
+    
+    
 }

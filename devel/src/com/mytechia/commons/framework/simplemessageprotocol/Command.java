@@ -46,14 +46,14 @@ public abstract class Command extends Message
     
     public static final int COMMAND_HEADER_SIZE = 8;
    
-    private static final int INIT_BYTE_INDEX = 0;
-    private static final int COMMAND_TYPE_INDEX = 1;
-    private static final int SEQUENCE_NUMBER_INDEX = 2;
-    private static final int ERROR_CODE_INDEX = 4;
+    public static final int INIT_BYTE_INDEX = 0;
+    public static final int COMMAND_TYPE_INDEX = 1;
+    public static final int SEQUENCE_NUMBER_INDEX = 2;
+    public static final int ERROR_CODE_INDEX = 4;
     /** Index of Data Size field. Field of 2 bytes. */    
-    private static final int DATA_SIZE_INDEX = 5;
-    private static final int HEADER_CHECKSUM_INDEX = 7;
-    private static final int DATA_INDEX = COMMAND_HEADER_SIZE;
+    public static final int DATA_SIZE_INDEX = 5;
+    public static final int HEADER_CHECKSUM_INDEX = 7;
+    public static final int DATA_INDEX = COMMAND_HEADER_SIZE;
 
 
     private byte errorCode;
@@ -83,6 +83,14 @@ public abstract class Command extends Message
     public void setData(byte[] data) {
         super.setData(data);
         this.dataSize = data.length;
+    }
+    
+    /**
+     * Obtain user data size (data without checksum).
+     * @return
+     */
+    public int getDataSize() {
+        return (getData() == null) ? this.dataSize : getData().length;        
     }
 
     
@@ -206,9 +214,9 @@ public abstract class Command extends Message
         // Head checksum
         setHeaderChecksum(headChecksum);
         // Data checksum
-        setDataChecksum((byte) 0);
+        //setDataChecksum((byte) 0);
         // Data
-        setData(new byte[0]);
+        //setData(new byte[0]);
     }
 
 
@@ -234,19 +242,14 @@ public abstract class Command extends Message
             setDataChecksum((byte) 0);
         }
         else {
-            if (bytes.length != (initIndex + getDataFieldSize())) {
-                throw new MessageFormatException("Invalid message size.");
+            // Calculate and verify data checksum (last data field byte)
+            byte dataChecksum = calcChecksum(bytes, initIndex, dataLen);
+            if (bytes[initIndex + dataLen] != dataChecksum) {
+                throw new MessageFormatException("Data checksum error.");
             }
-            else {
-                // Calculate and verify data checksum (last data field byte)
-                byte dataChecksum = calcChecksum(bytes, initIndex, dataLen);
-                if (bytes[initIndex + dataLen] != dataChecksum) {
-                    throw new MessageFormatException("Data checksum error.");
-                }
 
-                setData(Arrays.copyOfRange(bytes, initIndex, initIndex + dataLen));
-                setDataChecksum(dataChecksum);
-            }
+            setData(Arrays.copyOfRange(bytes, initIndex, initIndex + dataLen));
+            setDataChecksum(dataChecksum);
         }
 
     }

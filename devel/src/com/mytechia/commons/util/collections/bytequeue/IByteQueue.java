@@ -48,10 +48,13 @@ public interface IByteQueue
     
     byte poll() throws EmptyByteQueueException;
     int poll(byte[] bytes, int offset, int count);
+    
+    byte get() throws EmptyByteQueueException;
+    int get(byte[] bytes, int offset, int count);
 
     void clear();   
     int getAvailableSpace();
     int getUsedSpace();
     boolean isEmpty();
-    
+    void discardBytes(int byteNum);
 }

@@ -117,5 +117,34 @@ public class UDPAddress implements IAddress
     }
 
     
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + (this.addr != null ? this.addr.hashCode() : 0);
+        hash = 47 * hash + (this.ip != null ? this.ip.hashCode() : 0);
+        hash = 47 * hash + this.port;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(IAddress obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final UDPAddress other = (UDPAddress) obj;
+        if (this.addr != other.addr && (this.addr == null || !this.addr.equals(other.addr))) {
+            return false;
+        }
+        if ((this.ip == null) ? (other.ip != null) : !this.ip.equals(other.ip)) {
+            return false;
+        }
+        if (this.port != other.port) {
+            return false;
+        }
+        return true;
+    }
 
 }
