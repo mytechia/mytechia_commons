@@ -121,9 +121,7 @@ public abstract class Command extends Message
         // Command type
         bytes[COMMAND_TYPE_INDEX] = getCommandType();
         // Secuence number   
-        if (getSequenceNumber() > 32767) {
-            System.out.println("");
-        }
+
         EndianConversor.ushortToLittleEndian(getSequenceNumber(), bytes, SEQUENCE_NUMBER_INDEX);
         
         int sequenceNumber = EndianConversor.byteArrayLittleEndianToUShort(bytes, SEQUENCE_NUMBER_INDEX);
