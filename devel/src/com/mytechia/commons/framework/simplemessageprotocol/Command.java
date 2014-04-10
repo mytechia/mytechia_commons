@@ -236,6 +236,9 @@ public abstract class Command extends Message
         if ((dataLen > 0) && (bytes == null)) {
             throw new MessageFormatException("Invalid message size.");
         }
+        else if (bytes != null && (dataLen > bytes.length)) {
+            throw new MessageFormatException("Invalid message size.");
+        }
 
         if (dataLen == 0) {
             setData(new byte[0]);
