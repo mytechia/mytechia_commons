@@ -25,6 +25,7 @@ package com.mytechia.commons.util.net;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
@@ -60,8 +61,8 @@ public class IPUtil {
      * The loopback address (127.0.0.1) wil only be include if it is the only
      * address available.
      */
-    public static Collection getAllIPAddresses() throws Exception {
-        ArrayList direcciones = new ArrayList();
+    public static Collection<InetAddress> getAllIPAddresses() throws SocketException  {
+        ArrayList<InetAddress> direcciones = new ArrayList();
         InetAddress ip = null;
         InetAddress ipLoopback = null;
         
@@ -82,10 +83,10 @@ public class IPUtil {
                 }
             }
             
-            if ((direcciones.size() == 0) && (ipLoopback != null)) {
+            if ((direcciones.isEmpty()) && (ipLoopback != null)) {
                 direcciones.add(ipLoopback);
             }
-        } catch (Exception e) {
+        } catch (SocketException e) {
             throw e;
         }
         
@@ -96,7 +97,7 @@ public class IPUtil {
     /**
      * Decides whether an IP is local or not
      */
-    public static boolean isValidLocalIP(InetAddress ip) throws Exception {
+    public static boolean isValidLocalIP(InetAddress ip) throws SocketException   {
         String ipStr = ip.getHostAddress();
         
         Iterator ips = getAllIPAddresses().iterator();

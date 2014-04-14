@@ -1,6 +1,6 @@
 /*******************************************************************************
  *   
- *   Copyright 2008 Mytech Ingenieria Aplicada <http://www.mytechia.com>, Alejandro Paz
+ *   Copyright 2010 Mytech Ingenieria Aplicada <http://www.mytechia.com>, Alma Mallo, Gervarsio Varela
  * 
  *   This file is part of Mytechia Commons.
  *
@@ -19,28 +19,27 @@
  * 
  ******************************************************************************/
 
-package com.mytechia.commons.framework.simplemessageprotocol.channel;
+package com.mytechia.commons.util.collections.bytequeue.exception;
+
+import com.mytechia.commons.framework.exception.ModelException;
 
 
-/** A generic address of an element in a network
+/**
+ * <p></p>
  *
- * @author Alejandro Paz
+ * <p><b>Creation date:</b>08-abr-2014</p>
+ *
+ * <p><b>Changelog:</b></br>
+ * <ul>
+ * <li>08-abr-2014</br> Initial release</li>
+ * </ul>
+ * </p>
+ *
+ * @author Alma Mallo Casdelo 
  * @version 1
- *
- * File: IAddress.java
- * Date: 14-mar-2008
- * Changelog:
- *
- *      14-mar-2008  --  Initial version
  */
-public interface IAddress 
-{
 
-    public String getId();
 
-    public String getName();  
-    
-    public boolean equals(IAddress address);
-    
-    
+public class FullByteQueueException extends ModelException{
+
 }

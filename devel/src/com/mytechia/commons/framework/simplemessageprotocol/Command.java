@@ -44,16 +44,16 @@ public abstract class Command extends Message
     public static final int MAX_MESSAGE_SIZE = 2500; //bytes
     
     
-    public static final int COMMAND_HEADER_SIZE = 7;
+    public static final int COMMAND_HEADER_SIZE = 8;
    
-    private static final int INIT_BYTE_INDEX = 0;
-    private static final int COMMAND_TYPE_INDEX = 1;
-    private static final int SEQUENCE_NUMBER_INDEX = 2;
-    private static final int ERROR_CODE_INDEX = 3;
+    public static final int INIT_BYTE_INDEX = 0;
+    public static final int COMMAND_TYPE_INDEX = 1;
+    public static final int SEQUENCE_NUMBER_INDEX = 2;
+    public static final int ERROR_CODE_INDEX = 4;
     /** Index of Data Size field. Field of 2 bytes. */    
-    private static final int DATA_SIZE_INDEX = 4;
-    private static final int HEADER_CHECKSUM_INDEX = 6;
-    private static final int DATA_INDEX = COMMAND_HEADER_SIZE;
+    public static final int DATA_SIZE_INDEX = 5;
+    public static final int HEADER_CHECKSUM_INDEX = 7;
+    public static final int DATA_INDEX = COMMAND_HEADER_SIZE;
 
 
     private byte errorCode;
@@ -84,10 +84,18 @@ public abstract class Command extends Message
         super.setData(data);
         this.dataSize = data.length;
     }
+    
+    /**
+     * Obtain user data size (data without checksum).
+     * @return
+     */
+    public int getDataSize() {
+        return (getData() == null) ? this.dataSize : getData().length;        
+    }
 
     
     @Override
-    public void setSequenceNumber(byte sequenceNumber) {
+    public void setSequenceNumber(int sequenceNumber) {
         super.setSequenceNumber(sequenceNumber);
     }    
 
@@ -120,14 +128,20 @@ public abstract class Command extends Message
         bytes[INIT_BYTE_INDEX] = Message.INIT_BYTE;
         // Command type
         bytes[COMMAND_TYPE_INDEX] = getCommandType();
-        // Secuence number
-        bytes[SEQUENCE_NUMBER_INDEX] = getSequenceNumber();
+        // Secuence number   
+
+        EndianConversor.ushortToLittleEndian(getSequenceNumber(), bytes, SEQUENCE_NUMBER_INDEX);
+        
+        int sequenceNumber = EndianConversor.byteArrayLittleEndianToUShort(bytes, SEQUENCE_NUMBER_INDEX);
+        
+        
+        
         //error code
         bytes[ERROR_CODE_INDEX] = getErrorCode();
 
 
-        // Data size (2 bytes)
-        EndianConversor.shortToLittleEndian((short) getDataSize(), bytes, DATA_SIZE_INDEX);
+        // Data size (2 bytes)        
+        EndianConversor.ushortToLittleEndian(getDataSize(), bytes, DATA_SIZE_INDEX);
         
         // Message data        
         if (getDataSize() > 0) {            
@@ -177,7 +191,7 @@ public abstract class Command extends Message
         }
 
         // Obtain data size value
-        int dataSizeValue = EndianConversor.byteArrayLittleEndianToShort(messageHeaderData, DATA_SIZE_INDEX);
+        int dataSizeValue = EndianConversor.byteArrayLittleEndianToUShort(messageHeaderData, DATA_SIZE_INDEX);
         if (dataSizeValue >= 0) {
             this.dataSize = dataSizeValue;
         }
@@ -190,13 +204,19 @@ public abstract class Command extends Message
         // HeaderReply type
         this.errorCode = messageHeaderData[ERROR_CODE_INDEX];
         // Secuence number
-        setSequenceNumber(messageHeaderData[SEQUENCE_NUMBER_INDEX]);
+        int sequenceNumber = EndianConversor.byteArrayLittleEndianToUShort(messageHeaderData, SEQUENCE_NUMBER_INDEX);
+        if (sequenceNumber >= 0) {
+            setSequenceNumber(sequenceNumber);
+        }
+        else {
+            throw new MessageFormatException("Invalid sequence number value.");
+        }        
         // Head checksum
         setHeaderChecksum(headChecksum);
         // Data checksum
-        setDataChecksum((byte) 0);
+        //setDataChecksum((byte) 0);
         // Data
-        setData(new byte[0]);
+        //setData(new byte[0]);
     }
 
 
@@ -216,25 +236,23 @@ public abstract class Command extends Message
         if ((dataLen > 0) && (bytes == null)) {
             throw new MessageFormatException("Invalid message size.");
         }
+        else if (bytes != null && (dataLen > bytes.length)) {
+            throw new MessageFormatException("Invalid message size.");
+        }
 
         if (dataLen == 0) {
             setData(new byte[0]);
             setDataChecksum((byte) 0);
         }
         else {
-            if (bytes.length != (initIndex + getDataFieldSize())) {
-                throw new MessageFormatException("Invalid message size.");
+            // Calculate and verify data checksum (last data field byte)
+            byte dataChecksum = calcChecksum(bytes, initIndex, dataLen);
+            if (bytes[initIndex + dataLen] != dataChecksum) {
+                throw new MessageFormatException("Data checksum error.");
             }
-            else {
-                // Calculate and verify data checksum (last data field byte)
-                byte dataChecksum = calcChecksum(bytes, initIndex, dataLen);
-                if (bytes[initIndex + dataLen] != dataChecksum) {
-                    throw new MessageFormatException("Data checksum error.");
-                }
 
-                setData(Arrays.copyOfRange(bytes, initIndex, initIndex + dataLen));
-                setDataChecksum(dataChecksum);
-            }
+            setData(Arrays.copyOfRange(bytes, initIndex, initIndex + dataLen));
+            setDataChecksum(dataChecksum);
         }
 
     }

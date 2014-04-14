@@ -33,11 +33,17 @@ package com.mytechia.commons.framework.simplemessageprotocol;
  *      10/03/2008  --  Initial version
  */
 public class SequenceProvider {
+    
+    /**
+     * The sequence number is an 16 bit unsigned short.
+     */
+    private final int MAX_SEQ_NUMBER = ((int) Math.pow(2.0, 16.0)) -1;
+    
     /** Instance of the singleton. */
     private static SequenceProvider _instance = new SequenceProvider();
     
     /** Sequence value. */
-    private byte value = 0;
+    private int value = 0;
     
     
     /**
@@ -52,8 +58,8 @@ public class SequenceProvider {
     }
     
     
-    public void initializeSequence(byte value) {
-        this.value = value;
+    public void initializeSequence(int value) {
+        setValue(value);
     }
     
     /**
@@ -61,9 +67,22 @@ public class SequenceProvider {
      * 
      * @return
      */
-    public byte getNewValue() {
-        this.value++;
+    public int getNewValue() {
+        setValue(value+1);
         return this.value;
+    }
+    
+    /**
+     * Sets the value checking the is not greater than
+     * the maximun value of an unsigned short
+     * @param value 
+     */
+    private void setValue(int value) {
+        if (value > MAX_SEQ_NUMBER) {
+            this.value = 0;
+        }else {
+            this.value = value;
+        }        
     }
     
     /**
@@ -72,7 +91,7 @@ public class SequenceProvider {
      * 
      * @return
      */
-    public byte getLastValue() {
+    public int getLastValue() {
         return this.value;
     }
     

@@ -57,7 +57,7 @@ public class ClassLoaders
 
     public static List<Class<?>> getClassesForPackage(String pkgname, Class classForClassLoader) throws IOException
     {
-        List<Class<?>> classes = new ArrayList<>();
+        List<Class<?>> classes = new ArrayList<Class<?>>();
         String relPath = pkgname.replace('.', '/');
         System.out.println("ClassDiscovery: Package: " + pkgname + " becomes Path:" + relPath);
         Enumeration<URL> resources = classForClassLoader.getClassLoader().getResources(relPath);
@@ -70,7 +70,7 @@ public class ClassLoaders
 
     public static List<Class<?>> loadAndGetClassFromJar(String path) throws IOException, ClassNotFoundException
     {
-        List<Class<?>> classes = new ArrayList<>();
+        List<Class<?>> classes = new ArrayList<Class<?>>();
         JarFile jarFile = new JarFile(path);
         URLClassLoader sysloader = (URLClassLoader) ClassLoader.getSystemClassLoader();
         
@@ -95,7 +95,7 @@ public class ClassLoaders
         // Get a File object for the package
         File directory = null;
         String fullPath;        
-        List<Class<?>> classes = new ArrayList<>();
+        List<Class<?>> classes = new ArrayList<Class<?>>();
         if (resource == null)
         {
             throw new RuntimeException("No resource for " + relPath);
@@ -152,7 +152,7 @@ public class ClassLoaders
 
     private static List<Class<?>> getClassesContainedInPackageDirectory(File packageDirectory, String nameOfPackage)
     {
-        List<Class<?>> classes = new ArrayList<>();
+        List<Class<?>> classes = new ArrayList<Class<?>>();
         // Get the list of the files contained in the package
         String[] files = packageDirectory.list();
         if (null == files)
