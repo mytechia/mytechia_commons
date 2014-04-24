@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 /** A pool of worker threads that asynchronously execute Model Actions
  *
- * @author Gervasio Varela Fernandez - Integrated Group for Engineering Research
+ * @author Gervasio Varela Fernandez
  * @version 1
  *
  * Changelog:
