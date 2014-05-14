@@ -25,6 +25,7 @@ import com.mytechia.commons.framework.simplemessageprotocol.Command;
 import com.mytechia.commons.framework.simplemessageprotocol.channel.IAddress;
 import com.mytechia.commons.framework.simplemessageprotocol.channel.ReceiveResult;
 import com.mytechia.commons.framework.simplemessageprotocol.exception.CommunicationException;
+import com.mytechia.commons.util.net.IPUtil;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -53,9 +54,15 @@ public class UDPCommunicationChannelImplementation implements IUDPCommunicationC
     private ArrayList<UDPAddress> broadcastAddressList;
 
     private InetAddress defaultAddr;
+
     
-    
-    
+    /**
+     * Opens the socket in all the network interfaces and creates a broadcast
+     * address list with all of them.
+     * @param port
+     * @throws UnknownHostException
+     * @throws SocketException 
+     */
     public UDPCommunicationChannelImplementation(int port) throws UnknownHostException, SocketException
     {
         this.port = port;
@@ -68,7 +75,67 @@ public class UDPCommunicationChannelImplementation implements IUDPCommunicationC
         setBroadcastAdresses();
     }
     
+    /**
+     * Depending on the value os useFirtAddress parameter, opens the socket in 
+     * one network interface or in all the network interfaces. 
+     * 
+     * - useFirtAddress = true: opens the socket in the first network interface and
+     *   configure the broacast using this interface.
+     * - useFirtAddress = false: opens the socket in all the network interfaces.
+     * 
+     * @param port
+     * @param useFirstAddress
+     * @throws UnknownHostException
+     * @throws SocketException 
+     */
+    public UDPCommunicationChannelImplementation(int port, boolean useFirstAddress) throws UnknownHostException, SocketException
+    {
+        this.port = port;
+        this.udpSocket = new DatagramSocket(null);
+        this.udpSocket.setReuseAddress(true);
+        if (useFirstAddress) {
+            InetAddress localIp = IPUtil.getLocalIP();
+            this.udpSocket.bind(new InetSocketAddress(localIp, port));
+            setBroadcastAddressFromNetworkInterface(localIp);
+        }else {
+            this.udpSocket.bind(new InetSocketAddress(port));
+            setBroadcastAdresses();
+        }
+        
+        if (!this.udpSocket.getReuseAddress()) {
+            Logger.getAnonymousLogger().log(Level.WARNING, "Unable to configure an UDP socket to be reusable. You will not be able to launch more than one HI3 gateway on this host.");
+        }
+    }
     
+    /**
+     * Opens a socket in one network interface, using the ipaddress and port 
+     * received as parameters. Besides, configures the broadcast
+     * with the broadcast address received as parameter.
+     * 
+     * @param ipAddress
+     * @param broadcastAddress
+     * @param port
+     * @throws UnknownHostException
+     * @throws SocketException 
+     */
+    public UDPCommunicationChannelImplementation(InetAddress ipAddress, InetAddress broadcastAddress, int port) throws UnknownHostException, SocketException
+    {
+        this.port = port;
+        this.udpSocket = new DatagramSocket(null);
+        this.udpSocket.setReuseAddress(true);
+        this.udpSocket.bind(new InetSocketAddress(ipAddress, port));
+        if (!this.udpSocket.getReuseAddress()) {
+            Logger.getAnonymousLogger().log(Level.WARNING, "Unable to configure an UDP socket to be reusable. You will not be able to launch more than one HI3 gateway on this host.");
+        }
+        setCustomBroadcastAdress(broadcastAddress);
+    }        
+    
+    
+    /**
+     * Create the broadcast address list getting the broadcast address in the
+     * all network interfaces
+     * @throws SocketException 
+     */
     private void setBroadcastAdresses() throws SocketException
     {
         this.broadcastAddressList = new ArrayList<UDPAddress>(1);
@@ -86,6 +153,43 @@ public class UDPCommunicationChannelImplementation implements IUDPCommunicationC
             }
         }
     }
+
+    /**
+     * Creates the broadcast addresss list with one broadcast address. 
+     * Gets the broadcast address from the network interface which IP Address is
+     * equals to the inetAddress received as parameter
+     * 
+     * @param inetAddress
+     * @throws SocketException 
+     */
+    private void setBroadcastAddressFromNetworkInterface(InetAddress inetAddress) throws SocketException {
+        this.broadcastAddressList = new ArrayList<UDPAddress>(1);
+        Enumeration<NetworkInterface> nicList = NetworkInterface.getNetworkInterfaces();
+        while(nicList.hasMoreElements()) {
+            NetworkInterface nic = nicList.nextElement();
+            if (!nic.isLoopback() && !nic.isPointToPoint() && nic.isUp()) {
+                for(InterfaceAddress nicAddr : nic.getInterfaceAddresses()) {
+                    if (nicAddr.getAddress().equals(inetAddress)) {
+                        this.defaultAddr = nicAddr.getAddress();
+                        this.broadcastAddressList.add(new UDPAddress(nicAddr.getBroadcast(), this.port));
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+     * Creates the broadcast address list with one broadcast address received
+     * as paramater.
+     * @param broadcastAddress 
+     */
+    private void setCustomBroadcastAdress(InetAddress broadcastAddress) {
+        this.broadcastAddressList = new ArrayList<UDPAddress>(1);
+        this.defaultAddr = broadcastAddress;
+        this.broadcastAddressList.add(new UDPAddress(defaultAddr, port));
+    }
+    
+    
     
     @Override
     public int getPort()
