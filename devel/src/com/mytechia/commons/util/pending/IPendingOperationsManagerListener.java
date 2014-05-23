@@ -31,11 +31,11 @@ package com.mytechia.commons.util.pending;
  * Changelog:
  *      21-may-2014
  */
-public interface IPendingOperationsManagerListener<T>
+public interface IPendingOperationsManagerListener<E>
 {
     
     
-    public void notifyPendingOperationExpiration(long pendingOperationId, T pendingOperationData);
+    public void notifyPendingOperationExpiration(long pendingOperationId, E pendingOperationData);
     
 
 }
