@@ -27,6 +27,7 @@ package com.mytechia.commons.framework.simplemessageprotocol.udp;
 
 import com.mytechia.commons.framework.simplemessageprotocol.channel.INetworkBasicCommunicationChannel;
 import com.mytechia.commons.framework.simplemessageprotocol.exception.CommunicationException;
+import java.net.InetAddress;
 
 
 
@@ -53,7 +54,7 @@ public interface IUDPCommunicationChannel extends INetworkBasicCommunicationChan
 {
 
     
-    public String getIPAddress();
+    public InetAddress getIPAddress();
 
     public int getPort();
 

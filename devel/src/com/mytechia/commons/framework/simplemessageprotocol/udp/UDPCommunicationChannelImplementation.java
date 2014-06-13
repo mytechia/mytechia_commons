@@ -294,9 +294,9 @@ public class UDPCommunicationChannelImplementation implements IUDPCommunicationC
 
 
     @Override
-    public String getIPAddress()
+    public InetAddress getIPAddress()
     {
-        return this.defaultAddr.getHostAddress();
+        return this.defaultAddr;
     }
     
     
