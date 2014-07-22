@@ -29,14 +29,14 @@ import java.util.List;
 
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  * </p>
  *
  * <p><b>Creation date:</b> 04-02-2010</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 04-02-2010<\br> Initial release.</li>
+ * <li>1 - 04-02-2010 Initial release.</li>
  * </ul>
  * </p>
  *

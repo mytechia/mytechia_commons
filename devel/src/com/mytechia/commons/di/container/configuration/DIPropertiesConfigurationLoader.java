@@ -31,15 +31,15 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  * Populates an IDIContainer from a configuration stored on a Properties file
  * </p>
  *
  * <p><b>Creation date:</b> 03/08/2009</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 03/08/2009<\br> Initial release</li>
+ * <li>1 - 03/08/2009 Initial release</li>
  * </ul>
  * </p>
  *

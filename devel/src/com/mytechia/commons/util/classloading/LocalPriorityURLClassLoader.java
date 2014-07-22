@@ -27,7 +27,7 @@ import java.net.URLStreamHandlerFactory;
 
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  * An specialization of the URLClassLoader that first looks for clases in the
  * local classpath, and if the class is not found, delegates on the parents.
  *
@@ -35,9 +35,9 @@ import java.net.URLStreamHandlerFactory;
  *
  * <p><b>Creation date:</b> 21-jul-2009</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 21-jul-2009<\br> Initial release</li>
+ * <li>1 - 21-jul-2009 Initial release</li>
  * </ul>
  * </p>
  *

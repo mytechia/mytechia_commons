@@ -29,7 +29,7 @@ import java.net.UnknownServiceException;
 
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  * Support for URLs that point to resources accesible through the classpath like:
  * classpath://some.package.Something.properties
  *
@@ -38,9 +38,9 @@ import java.net.UnknownServiceException;
  *
  * <p><b>Creation date:</b> 02-may-2009</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 02-may-2009<\br> Initial release</li>
+ * <li>1 - 02-may-2009 Initial release</li>
  * </ul>
  * </p>
  *

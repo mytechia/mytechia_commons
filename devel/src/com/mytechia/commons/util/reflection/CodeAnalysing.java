@@ -29,15 +29,15 @@ import java.util.HashSet;
 
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  *
  * </p>
  *
  * <p><b>Creation date:</b> 08-feb-2011</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 08-feb-2011</br> Initial release.</li>
+ * <li>1 - 08-feb-2011 Initial release.</li>
  * </ul>
  * </p>
  *

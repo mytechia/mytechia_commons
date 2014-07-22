@@ -27,16 +27,16 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  * IPrototype manager for the prototype desing pattern.
  * Provides a container to store and clone prototypes
  * </p>
  *
  * <p><b>Creation date:</b> 03/07/2009</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 03/07/2009<\br> Initial release</li>
+ * <li>1 - 03/07/2009 Initial release</li>
  * </ul>
  * </p>
  *

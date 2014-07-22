@@ -25,16 +25,16 @@ import java.io.File;
 
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  *
  *
  * </p>
  *
  * <p><b>Creation date:</b> 25-jun-2009</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 25-jun-2009<\br> Initial release</li>
+ * <li>1 - 25-jun-2009 Initial release</li>
  * </ul>
  * </p>
  *
