@@ -1,6 +1,7 @@
 /*******************************************************************************
  *   
  *   Copyright ${date?date?string("yyyy")} Mytech Ingenieria Aplicada <http://www.mytechia.com>
+ *   Copyright ${date?date?string("yyyy")} ${user}
  * 
  *   This file is part of Mytechia Commons.
  *

@@ -29,7 +29,7 @@ import java.net.URLStreamHandler;
 
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  * Implements an URLStreamHandler to manage classpath URLs of the form
  * classpath://some.package.xxx
  *
@@ -47,9 +47,9 @@ import java.net.URLStreamHandler;
  *
  * <p><b>Creation date:</b> 02-may-2009</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 02-may-2009<\br> Initial release</li>
+ * <li>1 - 02-may-2009 Initial release</li>
  * </ul>
  * </p>
  *

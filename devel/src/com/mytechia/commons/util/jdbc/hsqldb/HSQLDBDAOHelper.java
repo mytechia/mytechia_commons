@@ -31,15 +31,15 @@ import java.sql.SQLException;
 
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  *
  * </p>
  *
  * <p><b>Creation date:</b> 09-dic-2010</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 09-dic-2010</br> Initial release.</li>
+ * <li>1 - 09-dic-2010 Initial release.</li>
  * </ul>
  * </p>
  *
