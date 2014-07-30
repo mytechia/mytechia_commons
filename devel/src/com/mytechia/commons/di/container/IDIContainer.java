@@ -25,7 +25,7 @@ import com.mytechia.commons.patterns.prototype.IPrototype;
 
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  * An IDIContainer (Dependency Injection Container) implements part of the
  * Dependency Injection architectural pattern, providing runtime access and
  * configuration of software dependencies.
@@ -41,9 +41,9 @@ import com.mytechia.commons.patterns.prototype.IPrototype;
  *
  * <p><b>Creation date:</b> 03/07/2009</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 03/07/2009<\br> Initial release</li>
+ * <li>1 - 03/07/2009 Initial release</li>
  * </ul>
  * </p>
  *

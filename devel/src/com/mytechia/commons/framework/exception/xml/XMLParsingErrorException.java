@@ -25,16 +25,16 @@ import com.mytechia.commons.framework.exception.ConfigurationException;
 
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  *
  *
  * </p>
  *
  * <p><b>Creation date:</b> 29-abr-2009</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 29-abr-2009<\br> Initial release</li>
+ * <li>1 - 29-abr-2009 Initial release</li>
  * </ul>
  * </p>
  *

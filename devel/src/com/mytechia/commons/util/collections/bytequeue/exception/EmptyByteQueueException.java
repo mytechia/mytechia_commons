@@ -29,9 +29,9 @@ import com.mytechia.commons.framework.exception.ModelException;
  *
  * <p><b>Creation date:</b>08-abr-2014</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>08-abr-2014</br> Initial release</li>
+ * <li>08-abr-2014 Initial release</li>
  * </ul>
  * </p>
  *

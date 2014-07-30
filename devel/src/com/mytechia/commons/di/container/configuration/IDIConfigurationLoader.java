@@ -24,16 +24,16 @@ package com.mytechia.commons.di.container.configuration;
 import com.mytechia.commons.di.container.IDIContainer;
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  * Concrete implementations of this interface provide support for populating
  * an IDIContainer from a configuration source like a file, URL, etc.
  * </p>
  *
  * <p><b>Creation date:</b> 03/08/2009</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 03/08/2009<\br> Initial release</li>
+ * <li>1 - 03/08/2009 Initial release</li>
  * </ul>
  * </p>
  *

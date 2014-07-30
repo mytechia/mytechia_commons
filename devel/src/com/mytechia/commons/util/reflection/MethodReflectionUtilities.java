@@ -29,16 +29,16 @@ import java.util.List;
 
 
 /**
- * <p><b>Description:</b></br>
+ * <p><b>Description:</b>
  * Contains methods to search & manage methods by reflection.
  *
  * </p>
  *
  * <p><b>Creation date:</b> 15-may-2009</p>
  *
- * <p><b>Changelog:</b></br>
+ * <p><b>Changelog:</b>
  * <ul>
- * <li>1 - 15-may-2009<\br> Initial release</li>
+ * <li>1 - 15-may-2009 Initial release</li>
  * </ul>
  * </p>
  *
