@@ -263,7 +263,9 @@ public class ArrayByteQueue implements IByteQueue{
     
     protected void removeBytes(int byteNum) {
         this.initIndex = incIndex(this.initIndex,byteNum);
-        this.dataCount -= byteNum;
+        if(this.dataCount>0){
+            this.dataCount = this.dataCount- byteNum;
+        }
     }
     
     protected void addBytes(int byteNum) {
