@@ -14,4 +14,4 @@ configuration of software dependencies
 * __com.mytechia.commons.patterns.prototype__: Implementation of the prototype pattern using the *com.mytechia.commons.di.container*.
 * __com.mytechia.commons.util__: General purpose utilies. Take a look.
 
-The current release can be found [here](https://github.com/GII/mytechia_commons/tree/master/release/mytechia_commons_1.01___20140205). If you are looking for an older release [check here](https://github.com/GII/mytechia_commons/tree/master/release).
+The current release (1.0.4) can be found [here](https://github.com/GII/mytechia_commons/tree/master/release/mytechia_commons_1.0.4___20140414). If you are looking for an older release [check here](https://github.com/GII/mytechia_commons/tree/master/release).
