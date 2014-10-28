@@ -23,6 +23,8 @@
 
 package com.mytechia.commons.util.conversion;
 
+import java.math.BigInteger;
+
 /** This class contains methods to convert multibyte data type variables
  * to other endianes (as arrays of bytes).
  * 
@@ -185,35 +187,35 @@ public final class EndianConversor
 
     public static long byteArrayLittleEndianToLong(byte[] data, int dataIndex)
     {
-        int i = 0;
+        BigInteger i= new BigInteger(String.valueOf(data[dataIndex + 7] & 0xff));
+        return i.shiftLeft(56).add(new BigInteger(String.valueOf(data[dataIndex + 6] & 0xff)).shiftLeft(48))
+                        .add(new BigInteger(String.valueOf(data[dataIndex + 5] & 0xff)).shiftLeft(40))
+                        .add(new BigInteger(String.valueOf(data[dataIndex + 4] & 0xff)).shiftLeft(32))
+                        .add(new BigInteger(String.valueOf(data[dataIndex + 3] & 0xff)).shiftLeft(24))
+                        .add(new BigInteger(String.valueOf(data[dataIndex + 2] & 0xff)).shiftLeft(16))
+                        .add(new BigInteger(String.valueOf(data[dataIndex + 1] & 0xff)).shiftLeft(8))
+                        .add(new BigInteger(String.valueOf(data[dataIndex] & 0xff)))
+                        .longValue();
 
-        i += (data[dataIndex + 7] & 0xff) << 56;
-        i += (data[dataIndex + 6] & 0xff) << 48;
-        i += (data[dataIndex + 5] & 0xff) << 40;
-        i += (data[dataIndex + 4] & 0xff) << 32;
-        i += (data[dataIndex + 3] & 0xff) << 24;
-        i += (data[dataIndex + 2] & 0xff) << 16;
-        i += (data[dataIndex + 1] & 0xff) << 8;
-        i += (data[dataIndex] & 0xff);
-
-        return i;
+        
     }
 
 
-    public static long byteArrayBigEndianToLong(byte[] data, int dataIndex)
-    {
-        int i = 0;
+    public static long byteArrayBigEndianToLong(byte[] data, int dataIndex){
+        
+                
+        BigInteger i = new BigInteger(String.valueOf(data[dataIndex] & 0xff));
+        return i.shiftLeft(56).add(new BigInteger(String.valueOf(data[dataIndex + 1] & 0xff)).shiftLeft(48))
+                            .add(new BigInteger(String.valueOf(data[dataIndex + 2] & 0xff)).shiftLeft(40))
+                            .add(new BigInteger(String.valueOf(data[dataIndex + 3] & 0xff)).shiftLeft(32))
+                            .add(new BigInteger(String.valueOf(data[dataIndex + 4] & 0xff)).shiftLeft(24))
+                            .add(new BigInteger(String.valueOf(data[dataIndex + 5] & 0xff)).shiftLeft(16))
+                            .add(new BigInteger(String.valueOf(data[dataIndex + 6] & 0xff)).shiftLeft(8))
+                            .add(new BigInteger(String.valueOf(data[dataIndex + 7] & 0xff)))
+                            .longValue();
+        
+        
 
-        i += (data[dataIndex] & 0xff) << 56;
-        i += (data[dataIndex + 1] & 0xff) << 48;
-        i += (data[dataIndex + 2] & 0xff) << 40;
-        i += (data[dataIndex + 3] & 0xff) << 32;
-        i += (data[dataIndex + 4] & 0xff) << 24;
-        i += (data[dataIndex + 5] & 0xff) << 16;
-        i += (data[dataIndex + 6] & 0xff) << 8;
-        i += (data[dataIndex + 7] & 0xff);
-
-        return i;
     }
     
 }

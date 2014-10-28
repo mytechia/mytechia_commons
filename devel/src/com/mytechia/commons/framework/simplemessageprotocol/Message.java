@@ -21,6 +21,7 @@
 
 package com.mytechia.commons.framework.simplemessageprotocol;
 
+import com.mytechia.commons.framework.simplemessageprotocol.exception.MessageFormatException;
 import com.mytechia.commons.util.conversion.EndianConversor;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -168,13 +169,18 @@ public abstract class Message {
     }
 
 
-    protected int readString(StringBuilder string, byte[] data, int offset)
+    protected int readString(StringBuilder string, byte[] data, int offset) throws MessageFormatException
     {
         return Message.readStringFromBytes(string, data, offset);
     }
     
-    public static int readStringFromBytes(StringBuilder string, byte[] data, int offset)
+    public static int readStringFromBytes(StringBuilder string, byte[] data, int offset) throws MessageFormatException
     {
+        
+        if(data.length<=offset){
+            throw new  MessageFormatException("Invalid data size");
+        }
+        
         int localOffset = 0;
         int idLen = EndianConversor.byteArrayLittleEndianToShort(data, offset);
         localOffset += EndianConversor.SHORT_SIZE_BYTES;
