@@ -10,8 +10,7 @@
     
                
     <scm>
-        <!-- especificar la url del SCM -->
-        <developerConnection>${scmUrl}</developerConnection>
+        <developerConnection>scm:git:https://github.com/GII/mytechia_commons.git</developerConnection>
     </scm>
     
     <properties>
