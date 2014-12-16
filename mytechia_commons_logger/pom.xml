@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mytechia_commons_logger</artifactId>
     <groupId>com.mytechia</groupId>
-    <version>1.0.7</version>
+    <version>1.0.8-SNAPSHOT</version>
     <packaging>jar</packaging>
     
                
     <scm>
         <developerConnection>scm:git:https://github.com/GII/mytechia_commons.git</developerConnection>
-      <tag>v1.0.7</tag>
+      <tag>HEAD</tag>
   </scm>
     
     <properties>
