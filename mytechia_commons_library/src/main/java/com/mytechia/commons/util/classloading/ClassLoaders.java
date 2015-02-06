@@ -1,29 +1,31 @@
-/*******************************************************************************
- *   
- *   Copyright 2012 Mytech Ingenieria Aplicada <http://www.mytechia.com>, Victor Sonora
- * 
- *   This file is part of Mytechia Commons.
+/**
+ * *****************************************************************************
  *
- *   Mytechia Commons is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU Lesser General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * Copyright 2012 Mytech Ingenieria Aplicada <http://www.mytechia.com>, Victor
+ * Sonora
  *
- *   Mytechia Commons is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU Lesser General Public License for more details.
+ * This file is part of Mytechia Commons.
  *
- *   You should have received a copy of the GNU Lesser General Public License
- *   along with Mytechia Commons.  If not, see <http://www.gnu.org/licenses/>.
- * 
- ******************************************************************************/
-
+ * Mytechia Commons is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or (at your
+ * option) any later version.
+ *
+ * Mytechia Commons is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with Mytechia Commons. If not, see <http://www.gnu.org/licenses/>.
+ *
+ *****************************************************************************
+ */
 package com.mytechia.commons.util.classloading;
-
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -68,25 +70,31 @@ public class ClassLoaders
         return classes;
     }
 
-    public static List<Class<?>> loadAndGetClassFromJar(String path) throws IOException, ClassNotFoundException
+    public static List<Class<?>> loadAndGetClassFromJar(String path) throws IOException, ClassNotFoundException, URISyntaxException
     {
         List<Class<?>> classes = new ArrayList<Class<?>>();
         JarFile jarFile = new JarFile(path);
-        URLClassLoader sysloader = (URLClassLoader) ClassLoader.getSystemClassLoader();
-        
+
+        URLClassLoader sysloader;
+
+        sysloader = new URLClassLoader(new URL[]
+        {
+            new URI("file://" + path).toURL()
+        }, ClassLoaders.class.getClassLoader());
         Enumeration<JarEntry> entries = jarFile.entries();
         while (entries.hasMoreElements())
         {
             JarEntry entry = entries.nextElement();
-            
+
             String entryName = entry.getName();
             if (entryName.endsWith(".class"))
             {
                 String className = entryName.replace('/', '.').replace('\\', '.').replace(".class", "");
-                Class<?> loadClass = sysloader.loadClass(className);
-                classes.add(Class.forName(className));
+//                Class<?> loadClass = sysloader.loadClass(className);
+                classes.add(Class.forName(className, true, sysloader));
             }
         }
+
         return classes;
     }
 
@@ -94,13 +102,13 @@ public class ClassLoaders
     {
         // Get a File object for the package
         File directory = null;
-        String fullPath;        
+        String fullPath;
         List<Class<?>> classes = new ArrayList<Class<?>>();
         if (resource == null)
         {
             throw new RuntimeException("No resource for " + relPath);
         }
-        fullPath = resource.getFile();        
+        fullPath = resource.getFile();
 
         try
         {
@@ -112,7 +120,7 @@ public class ClassLoaders
         } catch (IllegalArgumentException e)
         {
             directory = null;
-        }        
+        }
 
         if (directory != null && directory.exists())
         {
@@ -131,8 +139,8 @@ public class ClassLoaders
                     if (entryName.startsWith(relPath)
                             && entryName.endsWith(".class")
                             && entryName.length() > (relPath.length() + "/".length()))
-                    {                        
-                        String className = entryName.replace('/', '.').replace('\\', '.').replace(".class", "");                        
+                    {
+                        String className = entryName.replace('/', '.').replace('\\', '.').replace(".class", "");
                         try
                         {
                             classes.add(Class.forName(className));
@@ -165,7 +173,7 @@ public class ClassLoaders
             if (file.endsWith(".class"))
             {
                 // removes the .class extension
-                String className = nameOfPackage + '.' + file.substring(0, file.length() - 6);                
+                String className = nameOfPackage + '.' + file.substring(0, file.length() - 6);
                 try
                 {
                     classes.add(Class.forName(className));
