@@ -30,7 +30,6 @@ import java.awt.Point;
  *
  * @author  Gervasio Varela Fernandez
  * @version 1
- * @date: 27-11-2007
  *
  * Changelog:
  *

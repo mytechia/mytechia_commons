@@ -27,18 +27,18 @@ import java.net.URLStreamHandlerFactory;
 
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  *
  *
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 21-jul-2009</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
  * <ul>
  * <li>1 - 21-jul-2009 Initial release</li>
  * </ul>
- * </p>
+ *
  *
  * @author Gervasio Varela Fernandez
  * @version 1

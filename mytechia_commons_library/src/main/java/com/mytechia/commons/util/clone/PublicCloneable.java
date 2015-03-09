@@ -22,17 +22,17 @@
 package com.mytechia.commons.util.clone;
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  *
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 19-05-2010</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
  * <ul>
  * <li>1 - 19-05-2010 Initial release</li>
  * </ul>
- * </p>
+ *
  *
  * @author Alejandro Paz
  * @version 1

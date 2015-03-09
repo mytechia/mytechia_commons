@@ -36,8 +36,7 @@ import org.xml.sax.InputSource;
  *   builder.build(xmlfile);
  * 
  * @author Gervasio Varela Fernández
- * @version 1 
- * @date 10/01/2008
+ * @version 1
  * 
  * Changelog:
  *

@@ -33,7 +33,7 @@ import static org.picocontainer.Characteristics.CACHE;
 import static org.picocontainer.Characteristics.SYNCHRONIZE;
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  * Implementation of an IDIContainer (Dependency Injection Container) using
  * PicoContainer (http://www.picocontainer.org) as backend.
  *
@@ -45,15 +45,15 @@ import static org.picocontainer.Characteristics.SYNCHRONIZE;
  * must be on the same container or, at least the class that is be instantiated
  * must be on the child.
  *
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 03/07/2009</p>
  *
  * <p><b>Changelog:</b>
+ *
  * <ul>
  * <li>1 - 03/07/2009 Initial release</li>
  * </ul>
- * </p>
  *
  * @author Gervasio Varela Fernandez
  * @version 1

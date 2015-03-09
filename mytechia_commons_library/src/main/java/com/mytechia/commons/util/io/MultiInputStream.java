@@ -31,18 +31,18 @@ import java.io.InputStream;
 
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  * Reads multiple input streams sequentially as if they were only on input stream
  *
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 01-jul-2009</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
  * <ul>
  * <li>1 - 01-jul-2009 Initial release</li>
  * </ul>
- * </p>
+ *
  *
  * @author Gervasio Varela Fernandez
  * @version 1

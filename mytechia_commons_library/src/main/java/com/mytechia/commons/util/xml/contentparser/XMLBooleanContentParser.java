@@ -25,18 +25,18 @@ import com.mytechia.commons.framework.exception.xml.XMLParsingErrorException;
 
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  *
  *
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 02-may-2009</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
  * <ul>
  * <li>1 - 02-may-2009 Initial release</li>
  * </ul>
- * </p>
+ *
  *
  * @author Gervasio Varela Fernandez
  * @version 1

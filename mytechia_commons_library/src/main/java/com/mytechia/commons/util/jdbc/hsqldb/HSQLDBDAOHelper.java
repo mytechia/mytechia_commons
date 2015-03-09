@@ -31,17 +31,17 @@ import java.sql.SQLException;
 
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  *
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 09-dic-2010</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
  * <ul>
  * <li>1 - 09-dic-2010 Initial release.</li>
  * </ul>
- * </p>
+ *
  *
  * @author Gervasio Varela
  * @version 1

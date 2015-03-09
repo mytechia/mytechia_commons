@@ -29,16 +29,16 @@ import java.util.List;
 
 
 /**
- * <p><b>Description:</b>
- * </p>
+ * <p><b>Description:</b></p>
+ *
  *
  * <p><b>Creation date:</b> 04-02-2010</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
  * <ul>
  * <li>1 - 04-02-2010 Initial release.</li>
  * </ul>
- * </p>
+ *
  *
  * @author Gervasio Varela Fernandez
  * @version 1

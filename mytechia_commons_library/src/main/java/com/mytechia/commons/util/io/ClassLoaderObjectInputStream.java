@@ -29,18 +29,18 @@ import java.util.Arrays;
 
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  * Allows the loading of serialized objects using a custom class loader.
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 21-jul-2009</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
  * <ul>
  * <li>2 - 14-feb-2012 Fixed error while loading arrays of objects</li>
  * <li>1 - 21-jul-2009 Initial release</li>
  * </ul>
- * </p>
+ *
  *
  * @author Gervasio Varela Fernandez
  * @version 2

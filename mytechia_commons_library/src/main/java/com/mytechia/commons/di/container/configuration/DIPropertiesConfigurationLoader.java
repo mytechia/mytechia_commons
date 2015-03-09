@@ -31,17 +31,17 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  * Populates an IDIContainer from a configuration stored on a Properties file
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 03/08/2009</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
+ *
  * <ul>
  * <li>1 - 03/08/2009 Initial release</li>
  * </ul>
- * </p>
  *
  * @author Gervasio Varela Fernandez
  * @version 1
@@ -91,7 +91,8 @@ public class DIPropertiesConfigurationLoader implements IDIConfigurationLoader
     /** Creates an instance of IDIPropertiesConfigurationLoader by specifying
      * the path to the configuration file
      *
-     * @param filePath path of the properties configuration file
+     * @param resourcePath path of the properties configuration file
+     * @throws java.io.IOException
      *
      */
     public DIPropertiesConfigurationLoader(String resourcePath) throws IOException

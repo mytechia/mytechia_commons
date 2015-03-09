@@ -27,18 +27,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  * IPrototype manager for the prototype desing pattern.
  * Provides a container to store and clone prototypes
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 03/07/2009</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
  * <ul>
  * <li>1 - 03/07/2009 Initial release</li>
  * </ul>
- * </p>
+ *
  *
  * @author Gervasio Varela Fernandez
  * @version 1
@@ -148,7 +148,7 @@ public class PrototypeContainer
      * NOTE: IPrototype pattern
      *
      * @param key key of the prototype
-     * @param prototype the prototype to unregister
+     * @param c the prototype to unregister
 	 */
 	public void unregisterPrototype( String key, Class c )
     {

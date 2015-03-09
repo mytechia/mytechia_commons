@@ -29,17 +29,17 @@ import java.util.HashSet;
 
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  *
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 08-feb-2011</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
  * <ul>
  * <li>1 - 08-feb-2011 Initial release.</li>
  * </ul>
- * </p>
+ *
  *
  * @author Gervasio Varela
  * @version 1

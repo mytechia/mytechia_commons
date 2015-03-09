@@ -30,11 +30,11 @@ import com.mytechia.commons.util.collections.bytequeue.exception.FullByteQueueEx
  *
  * <p><b>Creation date:</b>08-abr-2014</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
  * <ul>
  * <li>08-abr-2014 Initial release</li>
  * </ul>
- * </p>
+ *
  *
  * @author Alma Mallo Casdelo 
  * @version 1

@@ -22,18 +22,18 @@
 package com.mytechia.commons.patterns.prototype;
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  * Indicates that an object supports the clone() operation to act as a
  * prototype object.
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 03/07/2009</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
+ *
  * <ul>
  * <li>1 - 03/07/2009 Initial release</li>
  * </ul>
- * </p>
  *
  * @author Gervasio Varela Fernandez
  * @version 1

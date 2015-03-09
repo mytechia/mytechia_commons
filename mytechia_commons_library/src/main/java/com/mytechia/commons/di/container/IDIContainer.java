@@ -25,7 +25,7 @@ import com.mytechia.commons.patterns.prototype.IPrototype;
 
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  * An IDIContainer (Dependency Injection Container) implements part of the
  * Dependency Injection architectural pattern, providing runtime access and
  * configuration of software dependencies.
@@ -37,15 +37,15 @@ import com.mytechia.commons.patterns.prototype.IPrototype;
  * An IDIContainer also provides support for the prototype pattern, by providing
  * a general prototype manager that can be used to store/clone the diferente
  * prototypes.
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 03/07/2009</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
+ *
  * <ul>
  * <li>1 - 03/07/2009 Initial release</li>
  * </ul>
- * </p>
  *
  * @author Gervasio Varela Fernandez
  * @version 1
@@ -172,7 +172,7 @@ public interface IDIContainer
      * NOTE: IPrototype pattern
      *
      * @param key key of the prototype
-     * @param prototype the prototype to unregister
+     * @param c the prototype to unregister
      */
     public void unregisterPrototype(String key, Class c);
 
@@ -185,8 +185,6 @@ public interface IDIContainer
      * parents. But the parents can't access its childs.
      *
      * NOTE: IPrototype pattern
-     *
-     * @param container the parent of this container
      */
     public IDIContainer makeChildContainer();
 

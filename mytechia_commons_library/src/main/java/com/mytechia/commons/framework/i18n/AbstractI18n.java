@@ -37,7 +37,7 @@ import java.util.logging.Logger;
  * Loads the language configuration from a configuration file and loads the
  * adecuate bundle for obtaining internacionalized strings. If the configuration
  * file doesn't exists, it uses the system locale.
- * </p>
+ *
  *
  * <p>
  * <b>Creation date:</b>29-ene-2014</p>

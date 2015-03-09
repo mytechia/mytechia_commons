@@ -25,18 +25,18 @@ import com.mytechia.commons.framework.exception.InternalErrorException;
 
 
 /**
- * <p><b>Description:</b>
+ * <p><b>Description:</b></p>
  * A method with the specified characteristic couldn't be found.
  *
- * </p>
+ *
  *
  * <p><b>Creation date:</b> 15-may-2009</p>
  *
- * <p><b>Changelog:</b>
+ * <p><b>Changelog:</b></p>
  * <ul>
  * <li>1 - 15-may-2009 Initial release</li>
  * </ul>
- * </p>
+ *
  *
  * @author Gervasio Varela Fernandez
  * @version 1
