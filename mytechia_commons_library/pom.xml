@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mytechia_commons_library</artifactId>
     <groupId>com.mytechia</groupId>
-    <version>1.0.8</version>
+    <version>1.0.9-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <url>https://github.com/GII/mytechia_commons</url>
     
     <name>${project.groupId}:${project.artifactId}</name>
     <description>A collection of general utilities for programming in JAVA.</description>
@@ -49,7 +50,7 @@
         <connection>scm:git:https://github.com/GII/mytechia_commons.git</connection>
         <developerConnection>scm:git:https://github.com/GII/mytechia_commons.git</developerConnection>
         <url>https://github.com/GII/mytechia_commons.git</url>
-        <tag>v1.0.8</tag>
+        <tag>HEAD</tag>
     </scm>
     
     <properties>
