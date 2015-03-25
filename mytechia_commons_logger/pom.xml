@@ -3,10 +3,11 @@
         
     
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>mytechia_commons_logger</artifactId>
+    <artifactId>mytechia-commons-logger</artifactId>
     <groupId>com.mytechia</groupId>
     <version>1.0.8</version>
     <packaging>jar</packaging>
+    <url>https://github.com/GII/mytechia_commons</url>
     
     <name>${project.groupId}:${project.artifactId}</name>
     <description>An universal log server using the simplemessageprotocol from mytechia_commons_library.</description>
@@ -65,6 +66,13 @@
         
         <profile>
             <id>release</id>
+            
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
             
             <build>
             
@@ -202,7 +210,22 @@
                             </execution>
                         
                         </executions>
-                    </plugin>           
+                    </plugin>
+                    
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                 
                     <!-- Copia todos los recursos al directorio release -->        
                     <plugin>
@@ -222,8 +245,13 @@
                                         <resource>
                                             <includes>
                                                 <include>${project.artifactId}-${project.version}.jar</include>
-                                                <include>${project.artifactId}-${project.version}-sources.zip</include>
-                                                <include>${project.artifactId}-${project.version}-javadoc.zip</include>
+                                                <include>${project.artifactId}-${project.version}.jar.asc</include>
+                                                <include>${project.artifactId}-${project.version}.pom</include>
+                                                <include>${project.artifactId}-${project.version}.pom.asc</include>
+                                                <include>${project.artifactId}-${project.version}-sources.jar</include>
+                                                <include>${project.artifactId}-${project.version}-sources.jar.asc</include>
+                                                <include>${project.artifactId}-${project.version}-javadoc.jar</include>
+                                                <include>${project.artifactId}-${project.version}-javadoc.jar.asc</include>
                                                 <include>dependency-jars/**</include>
                                             </includes>
                                             <directory>target</directory>
@@ -232,7 +260,20 @@
                                 </configuration>            
                             </execution>
                         </executions>
-                    </plugin>     
+                    </plugin>
+                    
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.3</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                    
                 </plugins>
        
             </build>
