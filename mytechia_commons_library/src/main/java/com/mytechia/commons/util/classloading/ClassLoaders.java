@@ -25,6 +25,8 @@ package com.mytechia.commons.util.classloading;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -70,17 +72,24 @@ public class ClassLoaders
         return classes;
     }
 
-    public static List<Class<?>> loadAndGetClassFromJar(String path) throws IOException, ClassNotFoundException, URISyntaxException
+    private static final Class<?>[] PARAMS = new Class[]
+    {
+        URL.class
+    };
+    
+    public static List<Class<?>> loadAndGetClassFromJar(String path) throws IOException, ClassNotFoundException, URISyntaxException, NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
     {
         List<Class<?>> classes = new ArrayList<Class<?>>();
         JarFile jarFile = new JarFile(path);
 
-        URLClassLoader sysloader;
-
-        sysloader = new URLClassLoader(new URL[]
+        URLClassLoader sysloader = (URLClassLoader) ClassLoader.getSystemClassLoader();
+        Class sysclass = URLClassLoader.class;
+        Method method = sysclass.getDeclaredMethod("addURL", PARAMS);
+        method.setAccessible(true);
+        method.invoke(sysloader, new Object[]
         {
             new URI("file://" + path).toURL()
-        }, ClassLoaders.class.getClassLoader());
+        });
         Enumeration<JarEntry> entries = jarFile.entries();
         while (entries.hasMoreElements())
         {
@@ -90,7 +99,6 @@ public class ClassLoaders
             if (entryName.endsWith(".class"))
             {
                 String className = entryName.replace('/', '.').replace('\\', '.').replace(".class", "");
-//                Class<?> loadClass = sysloader.loadClass(className);
                 classes.add(Class.forName(className, true, sysloader));
             }
         }
