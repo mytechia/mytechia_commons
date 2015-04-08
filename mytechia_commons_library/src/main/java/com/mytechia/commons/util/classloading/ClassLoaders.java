@@ -98,7 +98,8 @@ public class ClassLoaders
             String entryName = entry.getName();
             if (entryName.endsWith(".class"))
             {
-                String className = entryName.replace('/', '.').replace('\\', '.').replace(".class", "");
+                String className = entryName.replace('/', '.').replace('\\', '.'); 
+                className = className.substring(0, className.length() - ".class".length());
                 classes.add(Class.forName(className, true, sysloader));
             }
         }
