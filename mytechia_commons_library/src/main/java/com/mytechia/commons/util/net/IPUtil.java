@@ -24,6 +24,7 @@
 package com.mytechia.commons.util.net;
 
 import java.net.InetAddress;
+import java.net.InterfaceAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.ArrayList;
@@ -44,9 +45,9 @@ public class IPUtil {
      */
     public static InetAddress getLocalIP() {
         try {
-            Collection ips = getAllIPAddresses();
+            Collection<InterfaceAddress> ips = getAllIPAddresses();
             if (ips.size() > 0) {
-                return (InetAddress) ips.iterator().next();
+                return (InetAddress) ips.iterator().next().getAddress();
             } else {
                 return null;
             }
@@ -58,32 +59,31 @@ public class IPUtil {
 
     /**
      * Retrieves all the IP addresses of the local computer.
-     * The loopback address (127.0.0.1) wil only be include if it is the only
-     * address available.
+     * The loopback address (127.0.0.1) will not be included.
      */
-    public static Collection<InetAddress> getAllIPAddresses() throws SocketException  {
-        ArrayList<InetAddress> direcciones = new ArrayList();
-        InetAddress ip = null;
-        InetAddress ipLoopback = null;
+    public static Collection<InterfaceAddress> getAllIPAddresses() throws SocketException  {
+        ArrayList<InterfaceAddress> direcciones = new ArrayList();
+        InterfaceAddress ipLoopback = null;
         
         try {
             Enumeration ifaces = NetworkInterface.getNetworkInterfaces();
             while (ifaces.hasMoreElements()) {
                 NetworkInterface iface = (NetworkInterface) ifaces.nextElement();
-                Enumeration ips = iface.getInetAddresses();
-                while (ips.hasMoreElements()) {
-                    InetAddress ia = (InetAddress) ips.nextElement();
-                    if (ia.getHostAddress().indexOf(":")==-1) {
+                for (InterfaceAddress ips : iface.getInterfaceAddresses())
+                {
+                    InetAddress ia = ips.getAddress();
+                    if (!ia.getHostAddress().contains(":")) {
                         if (ia.isLoopbackAddress()) {
-                            ipLoopback = ia;
+                            ipLoopback = ips;
                         } else {
-                            direcciones.add(ia);
+                            direcciones.add(ips);
                         }
                     }
                 }
             }
             
-            if ((direcciones.isEmpty()) && (ipLoopback != null)) {
+            if ((direcciones.isEmpty()) && (ipLoopback != null))
+            {
                 direcciones.add(ipLoopback);
             }
         } catch (SocketException e) {

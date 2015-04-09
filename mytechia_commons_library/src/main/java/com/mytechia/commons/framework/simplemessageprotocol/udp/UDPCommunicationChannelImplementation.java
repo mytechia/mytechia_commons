@@ -69,13 +69,12 @@ public class UDPCommunicationChannelImplementation implements IUDPCommunicationC
         this.port = port;
         this.udpSocket = new DatagramSocket(null);
         this.udpSocket.setReuseAddress(true);
-        this.udpSocket.bind(new InetSocketAddress(ip, port));
-        setBroadcastAddressFromNetworkInterface(InetAddress.getByName(ip));
+        this.udpSocket.bind(new InetSocketAddress(port));
         if (!this.udpSocket.getReuseAddress())
         {
             Logger.getAnonymousLogger().log(Level.WARNING, "Unable to configure an UDP socket to be reusable. You will not be able to launch more than one UniDA gateway on this host.");
         }
-        setBroadcastAdresses();
+        this.setBroadcastAddressFromNetworkInterface(InetAddress.getByName(ip));
     }
 
     /**
@@ -200,20 +199,12 @@ public class UDPCommunicationChannelImplementation implements IUDPCommunicationC
     private void setBroadcastAddressFromNetworkInterface(InetAddress inetAddress) throws SocketException
     {
         this.broadcastAddressList = new ArrayList<UDPAddress>(1);
-        Enumeration<NetworkInterface> nicList = NetworkInterface.getNetworkInterfaces();
-        while (nicList.hasMoreElements())
+        for (InterfaceAddress localAddress : IPUtil.getAllIPAddresses())
         {
-            NetworkInterface nic = nicList.nextElement();
-            if (!nic.isLoopback() && !nic.isPointToPoint() && nic.isUp())
+            if (localAddress.getAddress().equals(inetAddress))
             {
-                for (InterfaceAddress nicAddr : nic.getInterfaceAddresses())
-                {
-                    if (nicAddr.getAddress().equals(inetAddress))
-                    {
-                        this.defaultAddr = nicAddr.getAddress();
-                        this.broadcastAddressList.add(new UDPAddress(nicAddr.getBroadcast(), this.port));
-                    }
-                }
+                this.defaultAddr = localAddress.getAddress();
+                this.broadcastAddressList.add(new UDPAddress(localAddress.getBroadcast(), this.port));
             }
         }
     }
