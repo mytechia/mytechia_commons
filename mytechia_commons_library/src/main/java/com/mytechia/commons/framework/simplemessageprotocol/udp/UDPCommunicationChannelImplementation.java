@@ -69,7 +69,7 @@ public class UDPCommunicationChannelImplementation implements IUDPCommunicationC
         this.port = port;
         this.udpSocket = new DatagramSocket(null);
         this.udpSocket.setReuseAddress(true);
-        this.udpSocket.bind(new InetSocketAddress(port));
+        this.udpSocket.bind(new InetSocketAddress(ip, port));
         if (!this.udpSocket.getReuseAddress())
         {
             Logger.getAnonymousLogger().log(Level.WARNING, "Unable to configure an UDP socket to be reusable. You will not be able to launch more than one UniDA gateway on this host.");
