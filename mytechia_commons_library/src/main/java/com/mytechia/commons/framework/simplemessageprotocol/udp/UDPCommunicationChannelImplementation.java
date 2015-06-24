@@ -326,5 +326,24 @@ public class UDPCommunicationChannelImplementation implements IUDPCommunicationC
     {
         return this.defaultAddr;
     }
+    
+    @Override
+    public boolean isClosed() {
+
+        if (udpSocket != null) {
+            return udpSocket.isClosed();
+        }
+
+        return true;
+    }
+
+    @Override
+    public void close() {
+        
+        if(udpSocket!=null){
+            udpSocket.close();
+        }
+        
+    }
 
 }

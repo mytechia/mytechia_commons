@@ -62,6 +62,9 @@ public interface IUDPCommunicationChannel extends INetworkBasicCommunicationChan
     public void broadcast(byte [] data, int offset, int count) throws CommunicationException;
 
     public void broadcast(byte [] data) throws CommunicationException;
-
+    
+    void close();
+    
+    boolean isClosed();
 	
 }
