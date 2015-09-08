@@ -14,4 +14,14 @@ configuration of software dependencies
 * __com.mytechia.commons.patterns.prototype__: Implementation of the prototype pattern using the *com.mytechia.commons.di.container*.
 * __com.mytechia.commons.util__: General purpose utilies. Take a look.
 
-The current release (1.0.8) can be found [here](https://github.com/GII/mytechia_commons/tree/master/release/mytechia_commons_1.0.8__20150310). If you are looking for an older release [check here](https://github.com/GII/mytechia_commons/tree/master/release).
+The current release (1.0.9) can be found [here](https://github.com/GII/mytechia_commons/tree/master/release/mytechia_commons_1.0.9__20150624/mytechia-commons-library-1.0.9). If you are looking for an older release [check here](https://github.com/GII/mytechia_commons/tree/master/release).
+
+Latest releases are uploaded to Maven Central also. To add the dependency to a POM:
+
+```xml
+<dependency>
+	<groupId>com.mytechia</groupId>
+        <artifactId>mytechia-commons-library</artifactId>
+        <version>1.0.9</version>
+</dependency>
+```
