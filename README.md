@@ -21,7 +21,7 @@ Latest releases are uploaded to Maven Central also. To add the dependency to a P
 ```xml
 <dependency>
 	<groupId>com.mytechia</groupId>
-        <artifactId>mytechia-commons-library</artifactId>
-        <version>1.0.9</version>
+	<artifactId>mytechia-commons-library</artifactId>
+	<version>1.0.9</version>
 </dependency>
 ```
