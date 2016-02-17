@@ -1,7 +1,7 @@
 /*******************************************************************************
- *   
+ *
  *   Copyright 2008 Mytech Ingenieria Aplicada <http://www.mytechia.com>, Gervasio Varela
- * 
+ *
  *   This file is part of Mytechia Commons.
  *
  *   Mytechia Commons is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
  *
  *   You should have received a copy of the GNU Lesser General Public License
  *   along with Mytechia Commons.  If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  ******************************************************************************/
 
 package com.mytechia.commons.util.math;
