@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mytechia-commons-library</artifactId>
     <groupId>com.mytechia</groupId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.2.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <url>https://github.com/mytechia/mytechia_commons</url>
     
