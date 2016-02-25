@@ -185,6 +185,18 @@ public final class EndianConversor
     }
 
 
+    public static void doubleToLittleEndian(double v, byte[] data, int dataIndex)
+    {
+        longToLittleEndian(Double.doubleToLongBits(v), data, dataIndex);
+    }
+
+
+    public static void doubleToBigEndian(double v, byte[] data, int dataIndex)
+    {
+        longToBigEndian(Double.doubleToLongBits(v), data, dataIndex);
+    }
+
+
     public static long byteArrayLittleEndianToLong(byte[] data, int dataIndex)
     {
         BigInteger i= new BigInteger(String.valueOf(data[dataIndex + 7] & 0xff));
@@ -217,5 +229,20 @@ public final class EndianConversor
         
 
     }
+
+
+    public static double byteArrayLittleEndianToDouble(byte[] data, int dataIndex){
+
+        return Double.longBitsToDouble(byteArrayLittleEndianToLong(data, dataIndex));
+
+    }
+
+
+    public static double byteArrayBigEndianToDouble(byte[] data, int dataIndex){
+
+        return Double.longBitsToDouble(byteArrayBigEndianToLong(data, dataIndex));
+
+    }
+
     
 }
