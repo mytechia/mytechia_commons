@@ -127,9 +127,9 @@ public class PicoContainerWrapper implements IDIContainer
     }
 
 
-    public synchronized void unregister(Class c)
+    public synchronized <T> void unregister(Class<T> c)
     {
-        picoContainer.removeComponent(c);
+        picoContainer.removeComponentByInstance(getInstance(c));
     }
     
 
@@ -139,7 +139,7 @@ public class PicoContainerWrapper implements IDIContainer
         List<Object> components = picoContainer.getComponents();
 
         for(Object obj : components) {
-            picoContainer.removeComponent(obj);
+            picoContainer.removeComponentByInstance(obj);
         }
 
     }

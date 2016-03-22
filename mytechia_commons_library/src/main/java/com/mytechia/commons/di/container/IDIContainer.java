@@ -105,7 +105,7 @@ public interface IDIContainer
      * @param c the class to be unregistered
      *
      */
-    public void unregister(Class c);
+    public <T> void  unregister(Class<T> c);
 
 
     /**
