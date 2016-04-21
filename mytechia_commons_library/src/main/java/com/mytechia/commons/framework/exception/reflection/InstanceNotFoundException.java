@@ -20,7 +20,7 @@
  ******************************************************************************/
 
 
-package com.mytechia.commons.framework.modelaction.exception;
+package com.mytechia.commons.framework.exception.reflection;
 
 import com.mytechia.commons.framework.exception.ModelException;
 

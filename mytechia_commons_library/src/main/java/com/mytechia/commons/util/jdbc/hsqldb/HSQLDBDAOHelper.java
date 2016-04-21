@@ -22,7 +22,7 @@
 package com.mytechia.commons.util.jdbc.hsqldb;
 
 import com.mytechia.commons.framework.exception.InternalErrorException;
-import com.mytechia.commons.framework.modelaction.exception.InstanceNotFoundException;
+import com.mytechia.commons.framework.exception.reflection.InstanceNotFoundException;
 import com.mytechia.commons.util.jdbc.GeneralOperations;
 import com.mytechia.commons.util.jdbc.StatementOperations;
 import java.sql.Connection;

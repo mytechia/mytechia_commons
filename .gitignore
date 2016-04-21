@@ -16,3 +16,5 @@ devel/ide_project/mytechia_commons_logger_maven/target
 .DS_Store
 /mytechia_commons_library/target/
 /mytechia_commons_logger/target/
+/mytechia-commons-modelaction/target/
+/mytechia-commons-di/target/
