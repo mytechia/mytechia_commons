@@ -4,7 +4,7 @@ Mytechia Commons
 
 The Mytechia Commons library is a collection of general utilities that can be useful when programming in JAVA.
 
-Currently Mytechia Commons is divided into three different maven projects:
+Currently Mytechia Commons is divided into three different maven projects.
 
 Mytechia Commons Library:
 * __com.mytechia.commons.framework.i18n__: Very light internationalization framework.
@@ -18,7 +18,7 @@ Mytechia Commons DI:
 Mytechia Commons ModelAction:
 * __com.mytechia.commons.framework.modelaction__: An action oriented framework to implement the business model of applications.
 
-Latest releases are uploaded to Maven Central. Currently it is divided into three different dependencies:
+Latest releases are uploaded to Maven Central.
 
 For the general utilities:
 ```xml
