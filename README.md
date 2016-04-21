@@ -2,26 +2,47 @@ Mytechia Commons
 ================
 
 
-The Mytechia Commons library is a collection of general utilities that can be usefull when programming in JAVA:
+The Mytechia Commons library is a collection of general utilities that can be useful when programming in JAVA.
 
-* __com.mytechia.commons.di.container__: Implements part of the Dependency Injection architectural pattern, providing runtime access and
-configuration of software dependencies
+Currently Mytechia Commons is divided into three different maven projects:
+
+Mytechia Commons Library:
 * __com.mytechia.commons.framework.i18n__: Very light internationalization framework.
-* __com.mytechia.commons.framework.modelaction__: An action oriented framework to implement the bussiness model of applications.
-* __com.mytechia.commons.framework.simplemessageprotocol__: A message oriented communications framework for JAVA. Includes an UDP implementation.
-* __com.mytechia.commons.framework.logger__: An universal log server using the simplemessageprotocol.
 * __com.mytechia.commons.patterns.observer__: Implementation of the observer pattern in JAVA.
 * __com.mytechia.commons.patterns.prototype__: Implementation of the prototype pattern using the *com.mytechia.commons.di.container*.
-* __com.mytechia.commons.util__: General purpose utilies. Take a look.
+* __com.mytechia.commons.util__: General purpose utilities. Take a look.
 
-The current release (1.0.9) can be found [here](https://github.com/GII/mytechia_commons/tree/master/release/mytechia_commons_1.0.9__20150624/mytechia-commons-library-1.0.9). If you are looking for an older release [check here](https://github.com/GII/mytechia_commons/tree/master/release).
+Mytechia Commons DI:
+* __com.mytechia.commons.di.container__: Implements part of the Dependency Injection architectural pattern, providing runtime access and configuration of software dependencies
 
-Latest releases are uploaded to Maven Central also. To add the dependency to a POM:
+Mytechia Commons ModelAction:
+* __com.mytechia.commons.framework.modelaction__: An action oriented framework to implement the business model of applications.
 
+Latest releases are uploaded to Maven Central. Currently it is divided into three different dependencies:
+
+For the general utilities:
 ```xml
 <dependency>
 	<groupId>com.mytechia</groupId>
 	<artifactId>mytechia-commons-library</artifactId>
-	<version>1.0.9</version>
+	<version>1.3.0</version>
+</dependency>
+```
+
+For the DI container:
+```xml
+<dependency>
+	<groupId>com.mytechia</groupId>
+	<artifactId>mytechia-commons-di</artifactId>
+	<version>1.3.0</version>
+</dependency>
+```
+
+For the "modelaction" framework:
+```xml
+<dependency>
+	<groupId>com.mytechia</groupId>
+	<artifactId>mytechia-commons-modelaction</artifactId>
+	<version>1.3.0</version>
 </dependency>
 ```
