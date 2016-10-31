@@ -182,9 +182,16 @@ public class Rectangle {
 
         this.verticalSide.intersectionWith(other.verticalSide, result.verticalSide);        
         
+        //TODO: usar calculateDimension
+        /*
         result.height= result.verticalSide.getMaximum()- result.verticalSide.getMinimum();
                 
         result.width= result.horizontalSide.getMaximum()- result.horizontalSide.getMinimum();
+        */
+        
+        result.height= this.calculateDimension(result.verticalSide);
+        
+        result.width= this.calculateDimension(result.horizontalSide);
         
     }
     
@@ -219,12 +226,21 @@ public class Rectangle {
         
         this.horizontalSide.unionWith(other.horizontalSide, result.horizontalSide);
         
-        this.verticalSide.unionWith(other.horizontalSide, result.horizontalSide);
+        this.verticalSide.unionWith(other.verticalSide, result.verticalSide);
+        
+        result.height= calculateDimension(result.verticalSide);
+        
+        result.width= calculateDimension(result.horizontalSide);;
         
         if((result.getHeight()==0) || (result.getWidth()==0)){
             result.copy(EMPTY);
         }
 
+    }
+    
+    
+    private int calculateDimension(Range range){
+    	return (range.length()-1);
     }
     
     
