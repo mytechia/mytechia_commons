@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mytechia-commons-library</artifactId>
     <groupId>com.mytechia</groupId>
-    <version>1.3.3-SNAPSHOT</version>
+    <version>1.3.3</version>
     <packaging>jar</packaging>
     <url>https://github.com/mytechia/mytechia_commons</url>
     
@@ -32,6 +32,10 @@
         <developer>
             <name>Victor Sonora Pombo</name>
             <url>https://github.com/VictorP</url>
+        </developer>
+        <developer>
+            <name>Luis Felipe Llamas Luaces</name>
+            <url>https://github.com/Shiul93</url>
         </developer>
     </developers>
     
