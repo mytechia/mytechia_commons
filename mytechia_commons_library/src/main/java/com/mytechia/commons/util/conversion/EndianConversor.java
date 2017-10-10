@@ -104,14 +104,28 @@ public final class EndianConversor
     
     
     public static int byteArrayLittleEndianToUShort(byte[] data, int dataIndex) 
-    {        
-        return (int)byteArrayLittleEndianToShort(data, dataIndex) & 0xffff;
+    {   
+        int i = 0;
+
+        i += (0x00) << 24;
+        i += (0x00) << 16;
+        i += (data[dataIndex + 1] & 0xff) << 8;
+        i += (data[dataIndex] & 0xff);
+
+        return i;
     }
 
 
     public static int byteArrayBigEndianToUShort(byte[] data, int dataIndex)
     {
-        return (int)byteArrayBigEndianToShort(data, dataIndex);
+        int i = 0;
+
+        i += (0x00) << 24;
+        i += (0x00) << 16;
+        i += (data[dataIndex] & 0xff) << 8;
+        i += (data[dataIndex + 1] & 0xff);
+
+        return i;
     }
 
 
@@ -153,14 +167,28 @@ public final class EndianConversor
     
     public static long byteArrayLittleEndianToUInt(byte[] data, int dataIndex) 
     {        
-        return (long)byteArrayLittleEndianToInt(data, dataIndex) & 0xffffffffL;
+        long i = 0;
+
+        i += (data[dataIndex + 3] & 0xff) << 24;
+        i += (data[dataIndex + 2] & 0xff) << 16;
+        i += (data[dataIndex + 1] & 0xff) << 8;
+        i += (data[dataIndex] & 0xff);
+
+        return i;
     }
 
 
 
     public static long byteArrayBigEndianToUInt(byte[] data, int dataIndex)
     {
-        return (long)byteArrayBigEndianToInt(data, dataIndex);
+        long i = 0;
+
+        i += (data[dataIndex] & 0xff) << 24;
+        i += (data[dataIndex + 1] & 0xff) << 16;
+        i += (data[dataIndex + 2] & 0xff) << 8;
+        i += (data[dataIndex + 3] & 0xff);
+
+        return i;
     }
     
     public static int byteArrayLittleEndianToInt(byte[] data, int dataIndex) 
