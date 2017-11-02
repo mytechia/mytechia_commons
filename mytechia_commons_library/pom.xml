@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mytechia-commons-library</artifactId>
     <groupId>com.mytechia</groupId>
-    <version>1.3.5-SNAPSHOT</version>
+    <version>1.3.5</version>
     <packaging>jar</packaging>
     <url>https://github.com/mytechia/mytechia_commons</url>
     
@@ -70,13 +70,6 @@
         
         <profile>
             <id>publicRelease</id>
-            
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
-            </distributionManagement>
             
             <build>
                 <plugins>
